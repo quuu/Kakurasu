@@ -103,10 +103,12 @@ function clickableGrid( rows, cols, callback ){
     }
 
   for(let i=0;i<up_to_down.length;i++){
+    // generate far right column
 
 
   }
   for(let i=0;i<left_to_write.length;i++){
+    // generate bottom row
 
 
   }
