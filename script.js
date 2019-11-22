@@ -1,15 +1,43 @@
 
 // create underlying representation
 // to keep track of score
-var answer = new Array(6)
+
+// variable to represent the values currently
+var up_to_down = new Array(5)
+
+var left_to_right = new Array(5)
+
+var answer = new Array(5)
 for (let i = 0; i < answer.length; i++){
-    answer[i] = new Array(6);
+    answer[i] = new Array(5);
 }
 for (let i = 0; i < answer.length; i++){
     for (let j = 0; j < answer[i].length; j++){
         answer[i][j] = Math.floor(Math.random() * 2)
     }
 }
+
+// generating the up to down answer
+for (let j = 0; j < answer.length; j++){
+    let sum = 0
+    for (let k = 0; k < answer[j].length; k++){
+        sum+= (k+1)*answer[j][k]
+    }
+    up_to_down[j] = sum
+}
+
+// generating the left to right answer
+for (let j = 0; j < answer.length; j++) {
+    let sum = 0
+    for (let k = 0; k < answer[j].length; k++) {
+        sum += (j + 1) * answer[k][j]
+    }
+    left_to_right[j] = sum
+}
+
+console.log(answer)
+console.log(up_to_down)
+console.log(left_to_right)
 
 var game_board = new Array(6)
 for (let i = 0; i < game_board.length; i++){
@@ -21,10 +49,6 @@ for (let i = 0; i < game_board.length; i++){
     }
 }
 
-// variable to represent the values currently
-var up_to_down = new Array(6)
-
-var left_to_right = new Array(6)
 
 function check_win() {
 
@@ -98,20 +122,20 @@ function clickableGrid( rows, cols, callback ){
                 if (c == 0 && j < cols) {
                     cell.innerHTML = j++;
                 }
+
+                // generates the bottom targets
+                if (r == rows && c > 0 && c < cols) {
+                    cell.innerHTML=left_to_right[c-1]
+                }
+
+                // generates the right targets
+                if (c == cols && r > 0 && r < rows) {
+                    cell.innerHTML = up_to_down[r-1]
+                }
             }
         }
+
     }
-
-  for(let i=0;i<up_to_down.length;i++){
-    // generate far right column
-
-
-  }
-  for(let i=0;i<left_to_write.length;i++){
-    // generate bottom row
-
-
-  }
     return grid;
 }
 // addHandlers()
