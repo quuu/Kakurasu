@@ -7,6 +7,7 @@ var up_to_down = new Array(5)
 
 var left_to_right = new Array(5)
 
+// randomly creating the answer grid
 var answer = new Array(5)
 for (let i = 0; i < answer.length; i++){
     answer[i] = new Array(5);
@@ -30,18 +31,15 @@ for (let j = 0; j < answer.length; j++){
 for (let j = 0; j < answer.length; j++) {
     let sum = 0
     for (let k = 0; k < answer[j].length; k++) {
-        sum += (j + 1) * answer[k][j]
+        sum += (k + 1) * answer[k][j]
     }
     left_to_right[j] = sum
 }
 
-console.log(answer)
-console.log(up_to_down)
-console.log(left_to_right)
-
-var game_board = new Array(6)
+// the game board representation to check for answer
+var game_board = new Array(5)
 for (let i = 0; i < game_board.length; i++){
-    game_board[i] = new Array(6)
+    game_board[i] = new Array(5)
 }
 for (let i = 0; i < game_board.length; i++){
     for (let j = 0; j < game_board[i].length; j++){
@@ -62,8 +60,6 @@ var grid = clickableGrid(6,6,function(el,row,col,i){
     console.log("You clicked on item #:",i);
 
 */
-
-
     if (el.className == 'clicked') {
       el.className = ''
       game_board[row][col] = 0;
@@ -75,6 +71,7 @@ var grid = clickableGrid(6,6,function(el,row,col,i){
 
     console.log(game_board)
 });
+
 
 document.body.appendChild(grid);
 
@@ -110,7 +107,7 @@ function clickableGrid( rows, cols, callback ){
 
                 cell.addEventListener('click',(function(el,r,c,i){
                     return function(){
-                        callback(el,r,c,i);
+                        callback(el,r-1,c-1,i);
                     }
                 })(cell,r,c,i),false);
             }
@@ -138,4 +135,3 @@ function clickableGrid( rows, cols, callback ){
     }
     return grid;
 }
-// addHandlers()
