@@ -61,12 +61,25 @@ var grid = clickableGrid(6,6,function(el,row,col,i){
 
 */
     if (el.className == 'clicked') {
-      el.className = ''
-      game_board[row][col] = 0;
+        el.className = ''
+        game_board[row][col] = 0;
+        let x = document.getElementById("grid").rows[row + 1].cells[6]
+        let y = document.getElementById("grid").rows[6].cells[col + 1]
+
+
+        x.className = ''
+        y.className = ''
+
+        console.log(x)
     }
     else {
-      el.className = 'clicked'
-      game_board[row][col] = 1;
+        el.className = 'clicked'
+        let x = document.getElementById("grid").rows[row + 1].cells[6]
+        let y = document.getElementById("grid").rows[6].cells[col + 1]
+
+        x.className = 'clicked' 
+        y.className = 'clicked' 
+        game_board[row][col] = 1;
     }
 
     console.log(game_board)
