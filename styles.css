@@ -11,7 +11,7 @@
 }
 .grid td.clicked {
     background-color:#0f0;
-    font-weight:bold; color:red;
+    /* font-weight:bold; color:red; */
 }
 
 td.square {
