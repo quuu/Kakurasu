@@ -47,6 +47,54 @@ for (let i = 0; i < game_board.length; i++){
     }
 }
 
+/*
+
+@row int
+
+*/
+function check_row(row, col) {
+
+    // check horizontally
+
+    // get the target answer at that row
+    const answer = up_to_down[row]
+
+
+
+    let sum = 0
+    // loop through that row
+    for (let i = 0; i < game_board[row].length; i++){
+        sum = sum + (game_board[row][i] * (i + 1 ) )
+    }
+    if (sum == answer) {
+        return true;
+    }
+    return false;
+
+    
+    
+}
+/*
+
+@col int
+
+*/
+function check_col(row, col) {
+
+    const answer = left_to_right[col]
+
+    let sum = 0
+
+    for (let i = 0; i < game_board.length; i++){
+        sum = sum + (game_board[i][col] * (i+1))
+    }
+    if (sum == answer) {
+        return true;
+    }
+    return false;
+
+}
+
 
 function check_win() {
 
@@ -71,7 +119,6 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
         x.className = ''
         y.className = ''
 
-        console.log(x)
     }
 
     // if not already selected
@@ -80,12 +127,17 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
         game_board[row][col] = 1;
 
         // get sum of across
-        if (check_row(row)) {
-            
+        if (check_row(row, col)) {
 
-            
+            // color in that that row is completed
+            let x = document.getElementById("grid").rows[row + 1].cells[6]
+            x.className = 'clicked' 
         }
-        if (check_col(col)){
+        if (check_col(row, col)){
+            // color in that that column is completed
+        
+            let y = document.getElementById("grid").rows[6].cells[col + 1]
+            y.className = 'clicked' 
 
         }
 
@@ -96,15 +148,8 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
         // get sum of down
 
 
-        
-        let x = document.getElementById("grid").rows[row + 1].cells[6]
-        let y = document.getElementById("grid").rows[6].cells[col + 1]
-
-        x.className = 'clicked' 
-        y.className = 'clicked' 
     }
 
-    console.log(game_board)
 });
 
 
