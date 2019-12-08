@@ -47,6 +47,8 @@ for (let i = 0; i < game_board.length; i++){
     }
 }
 
+let solved = 0
+
 /*
 
 @row int
@@ -58,8 +60,6 @@ function check_row(row, col) {
 
     // get the target answer at that row
     const answer = up_to_down[row]
-
-
 
     let sum = 0
     // loop through that row
@@ -98,6 +98,9 @@ function check_col(row, col) {
 
 function check_win() {
 
+    if (solved == 10) {
+        document.body.appendChild("<h1>Test</h1>")
+    }
 }
 
 let grid = clickableGrid(6,6,function(el,row,col,i){
@@ -119,24 +122,30 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
             x.className = 'clicked' 
+            solved+=1
         }
         else {
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
             x.className = '' 
+            solved-=1
         }
         if (check_col(row, col)){
             // color in that that column is completed
         
             let y = document.getElementById("grid").rows[6].cells[col + 1]
             y.className = 'clicked' 
+            solved+=1
         } 
         else {
             
             // color in that that column is completed
             let y = document.getElementById("grid").rows[6].cells[col + 1]
             y.className = '' 
+            solved-=1
         }
+        
+        check_win()
 
 
     }
@@ -152,30 +161,32 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
             x.className = 'clicked' 
-        }else {
+            solved+=1
+        } 
+        else {
             
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
             x.className = '' 
+            solved-=1
         }
         if (check_col(row, col)){
             // color in that that column is completed
         
             let y = document.getElementById("grid").rows[6].cells[col + 1]
             y.className = 'clicked' 
+            solved+=1
         }
         else {
             
             // color in that that column is completed
             let y = document.getElementById("grid").rows[6].cells[col + 1]
             y.className = '' 
+            solved-=1
         }
 
-        // if the sum totals up, 
-            // set the document grid row cells to the proper clicked tag
+        check_win()
 
-
-        // get sum of down
 
 
     }
