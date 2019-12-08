@@ -112,12 +112,32 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
     if (el.className == 'clicked') {
         el.className = ''
         game_board[row][col] = 0;
-        let x = document.getElementById("grid").rows[row + 1].cells[6]
-        let y = document.getElementById("grid").rows[6].cells[col + 1]
 
+        // get sum of across
+        if (check_row(row, col)) {
 
-        x.className = ''
-        y.className = ''
+            // color in that that row is completed
+            let x = document.getElementById("grid").rows[row + 1].cells[6]
+            x.className = 'clicked' 
+        }
+        else {
+            // color in that that row is completed
+            let x = document.getElementById("grid").rows[row + 1].cells[6]
+            x.className = '' 
+        }
+        if (check_col(row, col)){
+            // color in that that column is completed
+        
+            let y = document.getElementById("grid").rows[6].cells[col + 1]
+            y.className = 'clicked' 
+        } 
+        else {
+            
+            // color in that that column is completed
+            let y = document.getElementById("grid").rows[6].cells[col + 1]
+            y.className = '' 
+        }
+
 
     }
 
@@ -132,13 +152,23 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
             x.className = 'clicked' 
+        }else {
+            
+            // color in that that row is completed
+            let x = document.getElementById("grid").rows[row + 1].cells[6]
+            x.className = '' 
         }
         if (check_col(row, col)){
             // color in that that column is completed
         
             let y = document.getElementById("grid").rows[6].cells[col + 1]
             y.className = 'clicked' 
-
+        }
+        else {
+            
+            // color in that that column is completed
+            let y = document.getElementById("grid").rows[6].cells[col + 1]
+            y.className = '' 
         }
 
         // if the sum totals up, 
