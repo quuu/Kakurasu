@@ -3,47 +3,47 @@
 // to keep track of score
 
 // variable to represent the values currently
-let UpToDown = new Array(5)
+let upToDown = new Array(5)
 
-let LeftToRight = new Array(5)
+let leftToRight = new Array(5)
 
-// randomly creating the Answer grid
-let Answer = new Array(5)
-for (let i = 0; i < Answer.length; i++){
-    Answer[i] = new Array(5);
+// randomly creating the answer grid
+let answer = new Array(5)
+for (let i = 0; i < answer.length; i++){
+    answer[i] = new Array(5);
 }
-for (let i = 0; i < Answer.length; i++){
-    for (let j = 0; j < Answer[i].length; j++){
-        Answer[i][j] = Math.floor(Math.random() * 2)
+for (let i = 0; i < answer.length; i++){
+    for (let j = 0; j < answer[i].length; j++){
+        answer[i][j] = Math.floor(Math.random() * 2)
     }
 }
 
-// generating the up to down Answer
-for (let j = 0; j < Answer.length; j++){
+// generating the up to down answer
+for (let j = 0; j < answer.length; j++){
     let sum = 0
-    for (let k = 0; k < Answer[j].length; k++){
-        sum+= (k+1)*Answer[j][k]
+    for (let k = 0; k < answer[j].length; k++){
+        sum+= (k+1)*answer[j][k]
     }
-    UpToDown[j] = sum
+    upToDown[j] = sum
 }
 
-// generating the left to right Answer
-for (let j = 0; j < Answer.length; j++) {
+// generating the left to right answer
+for (let j = 0; j < answer.length; j++) {
     let sum = 0
-    for (let k = 0; k < Answer[j].length; k++) {
-        sum += (k + 1) * Answer[k][j]
+    for (let k = 0; k < answer[j].length; k++) {
+        sum += (k + 1) * answer[k][j]
     }
-    LeftToRight[j] = sum
+    leftToRight[j] = sum
 }
 
-// the game board representation to check for Answer
-let GameBoard = new Array(5)
-for (let i = 0; i < GameBoard.length; i++){
-    GameBoard[i] = new Array(5)
+// the game board representation to check for answer
+let gameBoard = new Array(5)
+for (let i = 0; i < gameBoard.length; i++){
+    gameBoard[i] = new Array(5)
 }
-for (let i = 0; i < GameBoard.length; i++){
-    for (let j = 0; j < GameBoard[i].length; j++){
-        GameBoard[i][j] = 0
+for (let i = 0; i < gameBoard.length; i++){
+    for (let j = 0; j < gameBoard[i].length; j++){
+        gameBoard[i][j] = 0
     }
 }
 
@@ -54,19 +54,19 @@ let solved = 0
 @row int
 
 */
-function CheckRow(row, col) {
+function checkRow(row, col) {
 
     // check horizontally
 
-    // get the target Answer at that row
-    const Answer = UpToDown[row]
+    // get the target answer at that row
+    const answer = upToDown[row]
 
     let sum = 0
     // loop through that row
-    for (let i = 0; i < GameBoard[row].length; i++){
-        sum = sum + (GameBoard[row][i] * (i + 1 ) )
+    for (let i = 0; i < gameBoard[row].length; i++){
+        sum = sum + (gameBoard[row][i] * (i + 1 ) )
     }
-    if (sum == Answer) {
+    if (sum == answer) {
         return true;
     }
     return false;
@@ -79,16 +79,16 @@ function CheckRow(row, col) {
 @col int
 
 */
-function CheckCol(row, col) {
+function checkCol(row, col) {
 
-    const Answer = LeftToRight[col]
+    const answer = leftToRight[col]
 
     let sum = 0
 
-    for (let i = 0; i < GameBoard.length; i++){
-        sum = sum + (GameBoard[i][col] * (i+1))
+    for (let i = 0; i < gameBoard.length; i++){
+        sum = sum + (gameBoard[i][col] * (i+1))
     }
-    if (sum == Answer) {
+    if (sum == answer) {
         return true;
     }
     return false;
@@ -96,7 +96,7 @@ function CheckCol(row, col) {
 }
 
 
-function CheckWin() {
+function checkWin() {
 
     console.log(solved)
     if (solved == 10) {
@@ -105,7 +105,7 @@ function CheckWin() {
     
 }
 
-let grid = ClickableGrid(6,6,function(el,row,col,i){
+let grid = clickableGrid(6,6,function(el,row,col,i){
   /*
     console.log("You clicked on element:",el);
     console.log("You clicked on row:",row);
@@ -116,10 +116,10 @@ let grid = ClickableGrid(6,6,function(el,row,col,i){
     // if already selected
     if (el.className == 'clicked') {
         el.className = ''
-        GameBoard[row][col] = 0;
+        gameBoard[row][col] = 0;
 
         // get sum of across
-        if (CheckRow(row, col)) {
+        if (checkRow(row, col)) {
 
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
@@ -132,7 +132,7 @@ let grid = ClickableGrid(6,6,function(el,row,col,i){
             x.className = '' 
             solved-=1
         }
-        if (CheckCol(row, col)){
+        if (checkCol(row, col)){
             // color in that that column is completed
         
             let y = document.getElementById("grid").rows[6].cells[col + 1]
@@ -147,7 +147,7 @@ let grid = ClickableGrid(6,6,function(el,row,col,i){
             solved-=1
         }
         
-        CheckWin()
+        checkWin()
 
 
     }
@@ -155,10 +155,10 @@ let grid = ClickableGrid(6,6,function(el,row,col,i){
     // if not already selected
     else {
         el.className = 'clicked'
-        GameBoard[row][col] = 1;
+        gameBoard[row][col] = 1;
 
         // get sum of across
-        if (CheckRow(row, col)) {
+        if (checkRow(row, col)) {
 
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
@@ -172,7 +172,7 @@ let grid = ClickableGrid(6,6,function(el,row,col,i){
             x.className = '' 
             solved-=1
         }
-        if (CheckCol(row, col)){
+        if (checkCol(row, col)){
             // color in that that column is completed
         
             let y = document.getElementById("grid").rows[6].cells[col + 1]
@@ -187,7 +187,7 @@ let grid = ClickableGrid(6,6,function(el,row,col,i){
             solved-=1
         }
 
-        CheckWin()
+        checkWin()
 
 
 
@@ -202,7 +202,7 @@ document.body.appendChild(grid);
 
 
 
-function ClickableGrid( rows, cols, callback ){
+function clickableGrid( rows, cols, callback ){
     let i = 0;
     let j = 0;
 
@@ -245,12 +245,12 @@ function ClickableGrid( rows, cols, callback ){
 
                 // generates the bottom targets
                 if (r == rows && c > 0 && c < cols) {
-                    cell.innerHTML=LeftToRight[c-1]
+                    cell.innerHTML=leftToRight[c-1]
                 }
 
                 // generates the right targets
                 if (c == cols && r > 0 && r < rows) {
-                    cell.innerHTML = UpToDown[r-1]
+                    cell.innerHTML = upToDown[r-1]
                 }
             }
         }
@@ -259,13 +259,6 @@ function ClickableGrid( rows, cols, callback ){
     return grid;
 }
 
-
-function Solve() {
-    console.log("solving the current game")
-}
-
-
-
-function CreateGame() {
+function createGame() {
     console.log("generating game")
 }

@@ -1,15 +1,16 @@
 // dark mode
 
 
-// reset
-function NewGame() {
-  CreateGame()
+// Create new game
+function newGame() {
+  console.log("creating new game")
 }
 
-function SolveGame() {
-  Solve()
+// Solve the current game
+function solveGame() {
+  console.log("solving current game")
 }
 
-function DarkMode() {
+function darkMode() {
   alert("dark mode")
 }
