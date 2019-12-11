@@ -3,7 +3,7 @@
 
 // Create new game
 function newGame() {
-  console.log("creating new game")
+  createGame()
 }
 
 // Solve the current game
