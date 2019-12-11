@@ -14,12 +14,12 @@ Completed
 - [x] Clicking cells does an action
 - [x] Box values horizontal
 - [x] Box values vertical
+- [x] Target value horizontal 
+- [x] Target value vertical
 
 
 TODO
 - [ ] Generate new game
-- [ ] Target value horizontal 
-- [ ] Target value vertical
 - [ ] Score highlighting upon satisifed
 - [ ] Score calculation
 - [ ] Game-win check
