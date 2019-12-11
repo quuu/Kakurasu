@@ -100,7 +100,7 @@ function checkWin() {
 
     console.log(solved)
     if (solved == 10) {
-        alert("gottem")
+        alert("Solved!")
     }
     
 }
@@ -115,6 +115,8 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
 */
     // if already selected
     if (el.className == 'clicked') {
+
+        // set it to unclicked
         el.className = ''
         gameBoard[row][col] = 0;
 
@@ -129,8 +131,12 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
         else {
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
-            x.className = '' 
-            solved-=1
+
+            // if it is not already unselected, unselect it and remove solved by 1
+            if (x.className != '') {
+                x.className = '' 
+                solved-=1
+            }
         }
         if (checkCol(row, col)){
             // color in that that column is completed
@@ -143,8 +149,10 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
             
             // color in that that column is completed
             let y = document.getElementById("grid").rows[6].cells[col + 1]
-            y.className = '' 
-            solved-=1
+            if (y.className != '') {
+                y.className = '' 
+                solved-=1
+            }
         }
         
         checkWin()
@@ -169,8 +177,10 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
             
             // color in that that row is completed
             let x = document.getElementById("grid").rows[row + 1].cells[6]
-            x.className = '' 
-            solved-=1
+            if (x.className != '') {
+                x.className = '' 
+                solved-=1
+            }
         }
         if (checkCol(row, col)){
             // color in that that column is completed
@@ -183,8 +193,10 @@ let grid = clickableGrid(6,6,function(el,row,col,i){
             
             // color in that that column is completed
             let y = document.getElementById("grid").rows[6].cells[col + 1]
-            y.className = '' 
-            solved-=1
+            if (y.className != '') {
+                y.className = '' 
+                solved-=1
+            }
         }
 
         checkWin()
@@ -221,6 +233,7 @@ function clickableGrid( rows, cols, callback ){
         for (let c=0;c<cols+1;++c){
             let cell = tr.appendChild(document.createElement('td'));
             cell.style.height = "100";
+            cell.style.width = "1.2em";
 
             // if it's either the top row, bottom row
             // left column, right column, don't add click event to it
