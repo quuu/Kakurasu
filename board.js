@@ -1,1 +1,8 @@
 // board class
+class Board{
+
+
+  
+
+
+}

@@ -1,6 +1,5 @@
 
 
-
 function createGame() {
     document.getElementById('game').innerHTML = ''
 
@@ -55,9 +54,7 @@ function createGame() {
     let solved = 0
 
     /*
-
     @row int
-
     */
     function checkRow(row, col) {
 
@@ -80,9 +77,7 @@ function createGame() {
         
     }
     /*
-
     @col int
-
     */
     function checkCol(row, col) {
 
@@ -159,12 +154,8 @@ function createGame() {
                     solved-=1
                 }
             }
-            
             checkWin()
-
-
         }
-
         // if not already selected
         else {
             el.className = 'clicked'
@@ -204,9 +195,7 @@ function createGame() {
                     solved-=1
                 }
             }
-
             checkWin()
-
         }
 
     });
