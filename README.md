@@ -16,12 +16,12 @@ Completed
 - [x] Box values vertical
 - [x] Target value horizontal 
 - [x] Target value vertical
+- [x] Generate new game
+- [x] Score highlighting upon satisifed
+- [x] Score calculation
+- [x] Game-win check
 
 
 TODO
-- [ ] Generate new game
-- [ ] Score highlighting upon satisifed
-- [ ] Score calculation
-- [ ] Game-win check
 - [ ] Game solution printer
 - [ ] Variable size of grid
