@@ -8,6 +8,10 @@ Current playable version of the game look outdated or contain ads.
 There isn't source code of Kakursau implementations available online except for solvers via text format.
 
 
+At the moment, it is playable, it lacks features like solving the board and leaderboards.
+
+[Play here](andrewqu.me/Kakurasu)
+
 Completed
 - [x] Created initial grid
 - [x] Initial styling of grid
