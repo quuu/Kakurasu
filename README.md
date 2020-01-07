@@ -10,7 +10,7 @@ There isn't source code of Kakursau implementations available online except for 
 
 At the moment, it is playable, it lacks features like solving the board and leaderboards.
 
-[Play here](andrewqu.me/Kakurasu)
+[Play here](http://andrewqu.me/Kakurasu)
 
 Completed
 - [x] Created initial grid
